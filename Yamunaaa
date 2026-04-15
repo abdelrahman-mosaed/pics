@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة زفاف – عبد الرحمن ♥ يمنى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Lateef:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            baby: {
+              50:  '#f0f8ff',
+              100: '#e0f0fd',
+              200: '#bae2fb',
+              300: '#7dcef8',
+              400: '#38b5f2',
+              500: '#0e9de0',
+              600: '#027dbf',
+              700: '#03639a',
+              800: '#07537f',
+              900: '#0c4569',
+            },
+            gold: {
+              300: '#f9e4a0',
+              400: '#f5d36a',
+              500: '#e8b84b',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            lateef: ['Lateef', 'serif'],
+          },
+          animation: {
+            'fade-up':   'fadeUp 0.8s ease forwards',
+            'fade-in':   'fadeIn 1s ease forwards',
+            'pulse-slow':'pulse 3s ease-in-out infinite',
+            'bounce-slow':'bounce 2s infinite',
+            'float':     'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:  { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn:  { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            float:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Cairo', sans-serif; direction: rtl; background: #f8fbff; }
+
+    /* Navbar */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; right:0; width:0; height:2px; background:#38b5f2; transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+
+    /* Hero overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.65) 0%,
+    rgba(14,100,190,0.55) 40%,
+    rgba(0,0,0,0.6) 100%
+  );
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0,0,0,0.4),
+               0 0 20px rgba(0,0,0,0.3);
+}
+    /* Reveal animation */
+    .reveal { opacity:0; transform:translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* Countdown cards */
+    .count-card { background: linear-gradient(135deg, #ffffff 60%, #e0f0fd 100%); }
+
+    /* Floral divider */
+    .divider { display:flex; align-items:center; gap:12px; }
+    .divider::before, .divider::after { content:''; flex:1; height:1px; background: linear-gradient(to right, transparent, #7dcef8, transparent); }
+
+    /* Gallery hover */
+    .gallery-item img { transition: transform .5s cubic-bezier(.25,.46,.45,.94); }
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    /* Floating WA button */
+    @keyframes waPulse { 0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)} 50%{box-shadow:0 0 0 14px rgba(37,211,102,0)} }
+    .wa-btn { animation: waPulse 2s ease-in-out infinite; }
+
+    /* RSVP input */
+    .rsvp-input { transition: border-color .3s, box-shadow .3s; }
+    .rsvp-input:focus { outline:none; border-color:#38b5f2; box-shadow:0 0 0 3px rgba(56,181,242,.2); }
+
+    /* Section backgrounds */
+    .section-wave { background: linear-gradient(180deg, #f0f8ff 0%, #ffffff 100%); }
+
+    /* Decorative circles */
+    .deco-circle { position:absolute; border-radius:50%; pointer-events:none; }
+  </style>
+</head>
+
+<body class="font-cairo text-gray-800 overflow-x-hidden">
+
+<!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/70 backdrop-blur-md shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#home" class="text-baby-600 font-bold text-xl tracking-wide flex items-center gap-2">
+      <span class="text-2xl">💍</span>
+      <span>عبد الرحمن <span class="text-baby-400">♥</span> يمنى</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
+      <a href="#home"    class="nav-link hover:text-baby-500 transition">الرئيسية</a>
+      <a href="#details" class="nav-link hover:text-baby-500 transition">التفاصيل</a>
+      <a href="#gallery" class="nav-link hover:text-baby-500 transition">المعرض</a>
+      <a href="#rsvp"    class="nav-link hover:text-baby-500 transition">تأكيد الحضور</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="قائمة">
+      <span class="ham-line block w-6 h-0.5 bg-baby-600 transition-all duration-300"></span>
+      <span class="ham-line block w-6 h-0.5 bg-baby-600 transition-all duration-300"></span>
+      <span class="ham-line block w-6 h-0.5 bg-baby-600 transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-baby-100 px-6 pb-4 flex flex-col gap-4 text-center font-semibold text-gray-600">
+    <a href="#home"    class="mobile-link py-2 hover:text-baby-500 transition border-b border-gray-100">الرئيسية</a>
+    <a href="#details" class="mobile-link py-2 hover:text-baby-500 transition border-b border-gray-100">التفاصيل</a>
+    <a href="#gallery" class="mobile-link py-2 hover:text-baby-500 transition border-b border-gray-100">المعرض</a>
+    <a href="#rsvp"    class="mobile-link py-2 hover:text-baby-500 transition">تأكيد الحضور</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+
+<section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+
+  <!-- Background Image -->
+  <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&q=80"
+       class="absolute inset-0 w-full h-full object-cover"
+       alt="background">
+
+  <!-- Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 px-4">
+
+    <!-- Basmala Card -->
+    <div class="inline-block bg-white/95 backdrop-blur-md rounded-2xl px-6 py-3 shadow-xl mb-6 border border-white/40">
+      <p class="text-baby-700 font-bold text-lg md:text-xl tracking-wider">
+        بسم الله الرحمن الرحيم
+      </p>
+    </div>
+    <!-- Event Title -->
+<p class="text-white text-xl md:text-2xl lg:text-3xl font-semibold mb-4 tracking-wide text-glow">
+  كتب كتاب
+</p>
+
+
+    <!-- Names Card -->
+    <div class="bg-black/30 backdrop-blur-md border border-white/20 rounded-3xl px-8 py-6 mb-6 shadow-2xl">
+      <h1 class="text-white font-black leading-tight text-3xl md:text-5xl lg:text-6xl text-glow">
+       عبد الرحمن & يمنى 
+      </h1>
+    </div>
+
+    <!-- Description -->
+    <p class="text-white text-lg md:text-xl max-w-xl mx-auto text-glow">
+      نحتفل معكم بأجمل لحظات حياتنا 💙
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════ COUNTDOWN ═══════════════════════════ -->
+<section id="countdown" class="py-20 section-wave relative overflow-hidden">
+  <div class="deco-circle w-96 h-96 bg-baby-100 -right-24 top-0 blur-3xl opacity-60"></div>
+
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+    <div class="divider mb-3 reveal"><span class="text-3xl">⏳</span></div>
+    <h2 class="text-2xl md:text-3xl font-black text-baby-700 mb-2 reveal">العد التنازلي للحفل</h2>
+    <p class="text-gray-400 mb-10 reveal">لا تفوت هذه اللحظة الجميلة</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal">
+      <!-- Days -->
+      <div class="count-card rounded-2xl shadow-md p-5 hover:shadow-baby-200 hover:-translate-y-1 transition-all duration-300 border border-baby-100">
+        <div id="days" class="text-4xl md:text-5xl font-black text-baby-600">--</div>
+        <div class="text-gray-500 font-semibold mt-1 text-sm">يوم</div>
+      </div>
+      <!-- Hours -->
+      <div class="count-card rounded-2xl shadow-md p-5 hover:shadow-baby-200 hover:-translate-y-1 transition-all duration-300 border border-baby-100">
+        <div id="hours" class="text-4xl md:text-5xl font-black text-baby-500">--</div>
+        <div class="text-gray-500 font-semibold mt-1 text-sm">ساعة</div>
+      </div>
+      <!-- Minutes -->
+      <div class="count-card rounded-2xl shadow-md p-5 hover:shadow-baby-200 hover:-translate-y-1 transition-all duration-300 border border-baby-100">
+        <div id="minutes" class="text-4xl md:text-5xl font-black text-baby-400">--</div>
+        <div class="text-gray-500 font-semibold mt-1 text-sm">دقيقة</div>
+      </div>
+      <!-- Seconds -->
+      <div class="count-card rounded-2xl shadow-md p-5 hover:shadow-baby-200 hover:-translate-y-1 transition-all duration-300 border border-baby-100">
+        <div id="seconds" class="text-4xl md:text-5xl font-black text-gold-500">--</div>
+        <div class="text-gray-500 font-semibold mt-1 text-sm">ثانية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ EVENT DETAILS ═══════════════════════════ -->
+<section id="details" class="py-20 bg-white relative overflow-hidden">
+  <div class="deco-circle w-72 h-72 bg-baby-50 -left-20 center blur-3xl"></div>
+
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+    <div class="divider mb-3 reveal"><span class="text-3xl">💒</span></div>
+    <h2 class="text-2xl md:text-3xl font-black text-baby-700 mb-2 reveal">تفاصيل الحفل</h2>
+    <p class="text-gray-400 mb-12 reveal">نتطلع لرؤيتكم في هذه المناسبة المبهجة</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Date card -->
+      <div class="reveal bg-gradient-to-br from-baby-50 to-white border border-baby-100 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div class="w-14 h-14 bg-baby-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📅</div>
+        <h3 class="font-bold text-baby-700 text-lg mb-2">التاريخ</h3>
+        <p class="text-gray-600 font-semibold">الجمعة</p>
+        <p class="text-baby-500 font-black text-xl">18 ديسمبر 2027</p>
+      </div>
+
+      <!-- Time card -->
+      <div class="reveal bg-gradient-to-br from-baby-50 to-white border border-baby-100 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" style="transition-delay:.1s">
+        <div class="w-14 h-14 bg-baby-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🕖</div>
+        <h3 class="font-bold text-baby-700 text-lg mb-2">الوقت</h3>
+        <p class="text-gray-600 font-semibold">ابتداءً من</p>
+        <p class="text-baby-500 font-black text-xl">7:00 مساءً</p>
+      </div>
+
+      <!-- Location card -->
+      <div class="reveal bg-gradient-to-br from-baby-50 to-white border border-baby-100 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" style="transition-delay:.2s">
+        <div class="w-14 h-14 bg-baby-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">📍</div>
+        <h3 class="font-bold text-baby-700 text-lg mb-2">المكان</h3>
+        <p class="text-gray-600 font-semibold">مسجد بدر</p>
+        <p class="text-baby-500 font-black text-xl">بورتوفيق-السويس</p>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="mt-14 reveal bg-gradient-to-l from-baby-50 to-white rounded-2xl border border-baby-100 px-8 py-6 shadow-sm max-w-xl mx-auto">
+      <p class="text-baby-700 font-bold text-base md:text-lg leading-relaxed" style="font-family:'Lateef',serif;font-size:1.35rem;">
+        ﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا ﴾
+      </p>
+      <p class="text-gray-400 text-sm mt-2">سورة الروم – ٢١</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ GALLERY ═══════════════════════════ -->
+<section id="gallery" class="py-20 section-wave relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <div class="divider mb-3 reveal"><span class="text-3xl">🖼️</span></div>
+    <h2 class="text-2xl md:text-3xl font-black text-baby-700 mb-2 reveal">معرض الصور</h2>
+    <p class="text-gray-400 mb-12 reveal">لحظات لا تُنسى</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+  <div class="gallery-item reveal rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 col-span-2 md:col-span-1 row-span-2 h-72 md:h-full">
+    <img src="https://github.com/abdelrahman-mosaed/pics/blob/main/42b4f9ad-5fe7-418f-ac43-db850dfc8b3e.jpg?raw=true"
+         class="w-full h-full object-contain bg-black"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item reveal rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-52">
+    <img src="https://github.com/abdelrahman-mosaed/pics/blob/main/69a1b1f9-96dc-48d5-bed0-e23b0bb35e51.jpg?raw=true"
+         class="w-full h-full object-contain bg-black"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item reveal rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-52" style="transition-delay:.1s">
+    <img src="https://github.com/abdelrahman-mosaed/pics/blob/main/9885398e-5f3a-49ac-8218-d8992f6d6885.jpg?raw=true"
+         class="w-full h-full object-contain bg-black"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item reveal rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-52" style="transition-delay:.15s">
+    <img src="https://github.com/abdelrahman-mosaed/pics/blob/main/d647c0ac-736b-438a-acc9-62a37fa9a138.jpg?raw=true"
+         class="w-full h-full object-contain bg-black"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item reveal rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-52 col-span-2 md:col-span-1" style="transition-delay:.2s">
+    <img src="https://github.com/abdelrahman-mosaed/pics/blob/main/dfc4d760-5373-45b3-8a5e-e6a8f67d0f0f.jpg?raw=true"
+         class="w-full h-full object-contain bg-black"
+         loading="lazy" />
+  </div>
+
+</div>
+</section>
+
+<!-- ═══════════════════════════ RSVP ═══════════════════════════ -->
+<section id="rsvp" class="py-20 bg-white relative overflow-hidden">
+  <div class="deco-circle w-80 h-80 bg-baby-50 -right-20 top-0 blur-3xl"></div>
+  <div class="deco-circle w-60 h-60 bg-gold-300/20 -left-10 bottom-0 blur-3xl"></div>
+
+  <div class="max-w-lg mx-auto px-4 relative z-10">
+    <div class="text-center mb-10">
+      <div class="divider mb-3 reveal"><span class="text-3xl">📝</span></div>
+      <h2 class="text-2xl md:text-3xl font-black text-baby-700 mb-2 reveal">تأكيد الحضور</h2>
+      <p class="text-gray-400 reveal">يسعدنا مشاركتنا هذه الفرحة</p>
+    </div>
+
+    <div class="reveal bg-gradient-to-br from-baby-50 to-white border border-baby-100 rounded-3xl p-8 shadow-lg">
+
+      <!-- Success message (hidden by default) -->
+      <div id="successMsg" class="hidden text-center py-8">
+        <div class="text-5xl mb-4 animate-float inline-block">🎊</div>
+        <h3 class="text-baby-600 font-black text-xl mb-2">شكراً لتأكيد حضوركم!</h3>
+        <p class="text-gray-500">نتطلع لرؤيتكم في هذه المناسبة السعيدة 💙</p>
+      </div>
+
+      <!-- RSVP Form -->
+      <div id="rsvpForm">
+        <div class="mb-5">
+          <label class="block text-gray-600 font-semibold mb-2 text-sm">الاسم الكريم *</label>
+          <input id="rsvpName" type="text" placeholder="أدخل اسمك الكريم"
+            class="rsvp-input w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 bg-white font-medium" />
+        </div>
+        <div class="mb-5">
+          <label class="block text-gray-600 font-semibold mb-2 text-sm">رقم الهاتف *</label>
+          <input id="rsvpPhone" type="tel" placeholder="01XXXXXXXXX" dir="ltr"
+            class="rsvp-input w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 bg-white font-medium text-right" />
+        </div>
+        <div class="mb-7">
+          <label class="block text-gray-600 font-semibold mb-2 text-sm">عدد الأفراد المرافقين</label>
+          <select id="rsvpGuests"
+            class="rsvp-input w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 bg-white font-medium appearance-none cursor-pointer">
+            <option value="1">1 فرد</option>
+            <option value="2">2 فرد</option>
+            <option value="3">3 أفراد</option>
+            <option value="4">4 أفراد</option>
+            <option value="5">5 أفراد أو أكثر</option>
+          </select>
+        </div>
+        <button onclick="submitRSVP()"
+          class="w-full bg-gradient-to-l from-baby-500 to-baby-400 hover:from-baby-600 hover:to-baby-500 text-white font-bold text-lg py-4 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-baby-300/40">
+          🎉 أكد حضورك الآن
+        </button>
+        <p id="rsvpError" class="hidden text-red-400 text-sm text-center mt-3 font-medium">يرجى ملء جميع الحقول المطلوبة ✨</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="bg-baby-700 text-white py-10 text-center">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-2xl mb-3 animate-float inline-block">💍</div>
+    <p class="font-black text-xl mb-1">عبد الرحمن <span class="text-gold-400">♥</span> يمنى</p>
+    <p class="text-baby-200 text-sm mb-4">18 ديسمبر 2027</p>
+    <div class="border-t border-baby-500 pt-4">
+      <p class="text-baby-300 text-sm">
+        Made with <span class="text-red-400">❤️</span> by
+        <span class="text-white font-semibold">Abdelrahman Mosaed</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ WHATSAPP FLOATING ═══════════════════════════ -->
+<a
+  href="https://wa.me/201157322551?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C+%D8%A8%D8%AE%D8%B5%D9%88%D8%B5+%D8%AF%D8%B9%D9%88%D8%A9+%D8%A7%D9%84%D9%81%D8%B1%D8%AD"
+  target="_blank"
+  rel="noopener"
+  class="wa-btn fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 text-white rounded-full shadow-xl flex items-center justify-center transition-transform duration-300 hover:scale-110"
+  aria-label="واتساب">
+  <!-- WhatsApp icon SVG -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+<script>
+  // ─── Navbar hamburger ───────────────────────────────────────────
+  const menuBtn    = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const hamLines   = document.querySelectorAll('.ham-line');
+
+  menuBtn.addEventListener('click', () => {
+    const open = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden', open);
+    // Animate lines
+    hamLines[0].style.transform = open ? '' : 'rotate(45deg) translate(5px, 5px)';
+    hamLines[1].style.opacity   = open ? '1' : '0';
+    hamLines[2].style.transform = open ? '' : 'rotate(-45deg) translate(5px, -5px)';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      hamLines.forEach((l, i) => { l.style.transform = ''; l.style.opacity = '1'; });
+    });
+  });
+
+  // Navbar scroll style
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 60) {
+      nav.classList.add('shadow-md');
+      nav.classList.remove('bg-white/70');
+      nav.classList.add('bg-white/90');
+    } else {
+      nav.classList.remove('shadow-md');
+      nav.classList.add('bg-white/70');
+      nav.classList.remove('bg-white/90');
+    }
+  });
+
+  // ─── Countdown ──────────────────────────────────────────────────
+  const eventDate = new Date('2027-12-18T19:00:00');
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = eventDate - now;
+    if (diff <= 0) {
+      document.getElementById('days').textContent    = '0';
+      document.getElementById('hours').textContent   = '0';
+      document.getElementById('minutes').textContent = '0';
+      document.getElementById('seconds').textContent = '0';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000)  / 60000);
+    const s = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('days').textContent    = String(d).padStart(2,'0');
+    document.getElementById('hours').textContent   = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ─── Scroll reveal ───────────────────────────────────────────────
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ─── RSVP submit ─────────────────────────────────────────────────
+  function submitRSVP() {
+    const name   = document.getElementById('rsvpName').value.trim();
+    const phone  = document.getElementById('rsvpPhone').value.trim();
+    const errEl  = document.getElementById('rsvpError');
+
+    if (!name || !phone) {
+      errEl.classList.remove('hidden');
+      setTimeout(() => errEl.classList.add('hidden'), 3000);
+      return;
+    }
+
+    // Show success
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('successMsg').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>
+
